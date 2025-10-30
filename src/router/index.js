@@ -10,6 +10,66 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/shop-info',
+      name: 'shop-info',
+      component: () => import('../views/ShopInfoView.vue')
+    },
+    {
+      path: '/shop-settings',
+      name: 'shop-settings',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/activity',
+      name: 'activity',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/marketing',
+      name: 'marketing',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/tools',
+      name: 'tools',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/products',
+      name: 'products',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/xiaopu',
+      name: 'xiaopu',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/business-analysis',
+      name: 'business-analysis',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/experience',
+      name: 'experience',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/violation',
+      name: 'violation',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/data-center',
+      name: 'data-center',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/cooperation',
+      name: 'cooperation',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // 路由级代码分割
