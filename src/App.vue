@@ -2,116 +2,116 @@
   <div id="app">
     <!-- 顶部导航栏 -->
     <header class="top-header">
-      <div class="header-left">
-        <div class="logo">
-          <span class="logo-icon">📱</span>
-          <span class="logo-text">抖店</span>
-        </div>
-        <div class="location">
-          <span>🗺️ 返回商家版</span>
-        </div>
-        <div class="search-box">
-          <input type="text" placeholder="智能检索-让工作更高效">
-          <button class="search-btn">🔍</button>
-        </div>
-      </div>
-      <div class="header-right">
-        <div class="header-icons">
-          <span class="icon">🔔</span>
-          <span class="icon">👤</span>
-          <span class="icon">📋</span>
-          <span class="icon">🎯</span>
-        </div>
-        <div class="user-info" @click="toggleUserDropdown" ref="userInfoRef">
-          <span class="user-name">时尚生活精致小铺XUq</span>
-          <span class="dropdown-arrow">▼</span>
-          <UserDropdown :visible="showUserDropdown" @close="showUserDropdown = false" />
-        </div>
-      </div>
+      <img src="@/assets/images/header.png" alt="Header Placeholder" class="header-placeholder" />
     </header>
 
     <div class="main-layout">
       <!-- 侧边栏 -->
       <aside class="sidebar">
+        <!-- 常用 -->
         <div class="sidebar-section">
-          <div class="section-title">💼 常用</div>
-          <ul class="menu-list">
-            <li class="menu-item">
-              <RouterLink to="/" class="menu-link">🏠 首页</RouterLink>
-            </li>
-          </ul>
+          <div class="section-title-no-arrow">
+            <span>常用</span>
+            <a href="#" class="manage-btn">管理</a>
+          </div>
+          <div class="submenu-grid">
+            <a href="#" class="submenu-link">商品管理</a>
+            <a href="#" class="submenu-link">订单管理</a>
+            <a href="#" class="submenu-link">售后工作台</a>
+            <a href="#" class="submenu-link">账户中心</a>
+          </div>
         </div>
         
+        <!-- 流量 -->
         <div class="sidebar-section">
-          <div class="section-title">🛍️ 店铺</div>
-          <ul class="menu-list">
-            <li class="menu-item">
-              <RouterLink to="/shop-info" class="menu-link">🏪 店铺信息</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/shop-settings" class="menu-link">⚙️ 店铺设置</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/activity" class="menu-link">🎉 活动中心</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/marketing" class="menu-link">📢 营销管理</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/tools" class="menu-link">🔧 营销工具</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/products" class="menu-link">📦 商品管理</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/xiaopu" class="menu-link">🏪 小铺产品</RouterLink>
-            </li>
-          </ul>
+          <div class="section-title" @click="toggleMenu('流量')">
+            <span>流量</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.流量 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
         
+        <!-- 订单 -->
         <div class="sidebar-section">
-          <div class="section-title">📋 订单</div>
+          <div class="section-title" @click="toggleMenu('订单')">
+            <span>订单</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.订单 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
         
+        <!-- 售后 -->
         <div class="sidebar-section">
-          <div class="section-title">🏪 售后</div>
+          <div class="section-title" @click="toggleMenu('售后')">
+            <span>售后</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.售后 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
         
+        <!-- 商品 -->
         <div class="sidebar-section">
-          <div class="section-title">📦 商品</div>
+          <div class="section-title" @click="toggleMenu('商品')">
+            <span>商品</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.商品 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
         
+        <!-- 店铺 -->
         <div class="sidebar-section">
-          <div class="section-title">🏬 店铺</div>
-          <ul class="menu-list">
-            <li class="menu-item">
-              <RouterLink to="/business-analysis" class="menu-link">📊 商家经营分析</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/experience" class="menu-link">💡 经营体验</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/violation" class="menu-link">⚖️ 经营管理</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/data-center" class="menu-link">📊 数据中心</RouterLink>
-            </li>
-            <li class="menu-item">
-              <RouterLink to="/cooperation" class="menu-link">🤝 保障服务</RouterLink>
-            </li>
-          </ul>
+          <div class="section-title" @click="toggleMenu('店铺')">
+            <span>店铺</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.店铺 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="submenu-grid" v-show="menuExpanded.店铺">
+            <RouterLink to="/shop-info" class="submenu-link">店铺信息设置</RouterLink>
+            <a href="#" class="submenu-link">商家体验分</a>
+            <a href="#" class="submenu-link">经营账号管理</a>
+            <a href="#" class="submenu-link">子账号管理</a>
+            <a href="#" class="submenu-link">违规管理</a>
+            <a href="#" class="submenu-link">店铺保障</a>
+            <a href="#" class="submenu-link">店铺装修</a>
+            <a href="#" class="submenu-link">店铺诊断</a>
+            <a href="#" class="submenu-link">商家权益</a>
+            <a href="#" class="submenu-link">保险服务</a>
+          </div>
         </div>
         
+        <!-- 用户 -->
         <div class="sidebar-section">
-          <div class="section-title">👥 用户</div>
+          <div class="section-title" @click="toggleMenu('用户')">
+            <span>用户</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.用户 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
         
+        <!-- 资金 -->
         <div class="sidebar-section">
-          <div class="section-title">💰 资金</div>
+          <div class="section-title" @click="toggleMenu('资金')">
+            <span>资金</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.资金 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
         
+        <!-- 应用 -->
         <div class="sidebar-section">
-          <div class="section-title">📱 应用</div>
+          <div class="section-title" @click="toggleMenu('应用')">
+            <span>应用</span>
+            <svg class="arrow" :class="{ expanded: menuExpanded.应用 }" width="12" height="12" viewBox="0 0 12 12">
+              <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
       </aside>
 
@@ -121,13 +121,7 @@
       </main>
     </div>
 
-    <!-- 智能助手浮动按钮 -->
-    <div class="chat-float-btn" @click="toggleChatAssistant" v-if="!showChatAssistant">
-      🤖
-    </div>
 
-    <!-- 智能助手聊天界面 -->
-    <ChatAssistant :visible="showChatAssistant" @close="showChatAssistant = false" />
   </div>
 </template>
 
@@ -135,18 +129,29 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
 import UserDropdown from './components/UserDropdown.vue'
-import ChatAssistant from './components/ChatAssistant.vue'
 
 const showUserDropdown = ref(false)
-const showChatAssistant = ref(false)
 const userInfoRef = ref(null)
+
+// 菜单展开状态
+const menuExpanded = ref({
+  常用: false,
+  流量: false,
+  订单: false,
+  售后: false,
+  商品: false,
+  店铺: false,
+  用户: false,
+  资金: false,
+  应用: false
+})
 
 const toggleUserDropdown = () => {
   showUserDropdown.value = !showUserDropdown.value
 }
 
-const toggleChatAssistant = () => {
-  showChatAssistant.value = !showChatAssistant.value
+const toggleMenu = (menuName) => {
+  menuExpanded.value[menuName] = !menuExpanded.value[menuName]
 }
 
 const handleClickOutside = (event) => {
@@ -175,201 +180,155 @@ onUnmounted(() => {
   min-height: 100vh;
   background-color: #f5f5f5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
 }
 
 /* 顶部导航栏 */
 .top-header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e6e6e6;
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  height: 60px;
-}
-
-.header-left {
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e6e6e6;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #1890ff;
-}
-
-.logo-icon {
-  font-size: 24px;
-}
-
-.location {
-  color: #666;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-  padding: 6px 12px;
-  width: 300px;
-}
-
-.search-box input {
-  background: none;
-  border: none;
-  outline: none;
-  flex: 1;
-  font-size: 14px;
-  color: #333;
-}
-
-.search-box input::placeholder {
-  color: #999;
-}
-
-.search-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header-icons {
-  display: flex;
-  gap: 15px;
-}
-
-.icon {
-  font-size: 18px;
-  cursor: pointer;
-  color: #666;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  color: #333;
-  font-size: 14px;
-  position: relative;
-}
-
-.dropdown-arrow {
-  color: #999;
-  font-size: 12px;
+.header-placeholder {
+  width: 100%;
+  height: 64px;
+  object-fit: cover;
+  display: block;
 }
 
 /* 主要布局 */
 .main-layout {
   display: flex;
-  margin-top: 60px;
-  min-height: calc(100vh - 60px);
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
 }
 
 /* 侧边栏 */
 .sidebar {
-  width: 240px;
+  width: 208px;
+  margin-left: 16px;
   background-color: #ffffff;
   border-right: 1px solid #e6e6e6;
   padding: 20px 0;
   overflow-y: auto;
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
 }
 
 .sidebar-section {
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .section-title {
-  padding: 8px 20px;
+  padding: 10px 16px;
+  height: 36px;
   font-size: 14px;
-  color: #666;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.menu-list {
-  list-style: none;
-}
-
-.menu-item {
-  margin: 2px 0;
-}
-
-.menu-link {
-  display: block;
-  padding: 10px 20px;
   color: #333;
-  text-decoration: none;
-  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
   transition: all 0.2s;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
 }
 
-.menu-link:hover {
-  background-color: #f0f9ff;
+.section-title:hover {
+  background-color: #f8f9fa;
   color: #1890ff;
 }
 
-.menu-link.router-link-active {
+.arrow {
+  transition: transform 0.2s ease;
+  color: #666;
+}
+
+.arrow.expanded {
+  transform: rotate(180deg);
+}
+
+/* 无箭头的一级菜单样式 */
+.section-title-no-arrow {
+  padding: 10px 16px;
+  height: 36px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 管理按钮样式 */
+.manage-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #666;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  background-color: #fff;
+  white-space: nowrap;
+}
+
+.manage-btn:hover {
   background-color: #e6f7ff;
   color: #1890ff;
-  border-right: 3px solid #1890ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.1);
+}
+
+/* 二级菜单网格布局 */
+.submenu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #f8f9fa;
+}
+
+.submenu-link {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #666;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-align: left;
+  background-color: #fff;
+  white-space: nowrap;
+}
+
+.submenu-link:hover {
+  color: #1890ff;
+}
+
+.submenu-link.router-link-active {
+  color: #1890ff;
+  background-color: #e6f7ff;
 }
 
 /* 主要内容区域 */
 .main-content {
   flex: 1;
-  padding: 20px;
   background-color: #f5f5f5;
   overflow-y: auto;
+  padding: 0;
+  margin-left: 224px;
 }
 
-/* 智能助手浮动按钮 */
-.chat-float-btn {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #4A90E2 0%, #7B68EE 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
-  transition: all 0.3s ease;
-  z-index: 999;
-}
 
-.chat-float-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.6);
-}
 </style>
