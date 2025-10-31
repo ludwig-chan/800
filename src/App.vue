@@ -215,9 +215,10 @@ onUnmounted(() => {
 /* 侧边栏 */
 .sidebar {
   width: 208px;
-  margin-left: 16px;
+  /* margin-left: 16px; */
+  margin-right: 140px;
   background-color: #ffffff;
-  border-right: 1px solid #e6e6e6;
+  /* border-right: 1px solid #e6e6e6; */
   padding: 20px 0;
   overflow-y: auto;
   position: fixed;

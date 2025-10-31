@@ -1,165 +1,67 @@
 <template>
   <div class="shop-info-page">
+    <!-- 顶部 Header -->
+    <div class="header-image">
+      <img src="@/assets/images/smallHeader.png" alt="Header" />
+    </div>
+
     <!-- 页面标题导航 -->
     <div class="page-tabs">
-      <div class="tab active">店铺信息</div>
-      <div class="tab">店铺设置</div>
-      <div class="tab">店铺动态</div>
+      <div 
+        class="tab" 
+        :class="{ active: activeTab === 'info' }"
+        @click="activeTab = 'info'"
+      >
+        店铺信息
+        <span class="help-icon" @click.stop="showHelp('info')">?</span>
+      </div>
+      <div 
+        class="tab"
+        :class="{ active: activeTab === 'settings' }"
+        @click="activeTab = 'settings'"
+      >
+        店铺设置
+        <span class="help-icon" @click.stop="showHelp('settings')">?</span>
+      </div>
+      <div 
+        class="tab"
+        :class="{ active: activeTab === 'qualification' }"
+        @click="activeTab = 'qualification'"
+      >
+        店铺资质
+        <span class="help-icon" @click.stop="showHelp('qualification')">?</span>
+      </div>
     </div>
 
-    <!-- 基本信息标签页 -->
-    <div class="content-tabs">
-      <div class="content-tab active">基本信息</div>
-      <div class="content-tab">合同信息</div>
-      <div class="content-tab">信营等级</div>
+    <!-- 店铺资质内容 -->
+    <div v-if="activeTab === 'qualification'" class="qualification-content">
+      <img src="@/assets/images/personalInfo.png" alt="个人信息" class="qualification-image" />
     </div>
 
-    <div class="shop-info-content">
-      <!-- 店铺基本信息 -->
-      <div class="info-section">
-        <div class="section-header">
-          <h3>⭐ 时尚生活精致小铺XUq</h3>
-          <div class="shop-id">个体店 · 店铺ID:251600090</div>
-        </div>
+    <!-- 店铺信息内容 -->
+    <div v-if="activeTab === 'info'" class="shop-info-content">
+      <!-- 基本信息图片 -->
+      <img src="@/assets/images/shopBasicInfo.png" alt="基本信息" class="basic-info-image" />
+    </div>
 
-        <div class="info-grid">
-          <div class="info-row">
-            <div class="info-label">管理人姓名</div>
-            <div class="info-value">徐建 ✏️</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">管理人手机号</div>
-            <div class="info-value">158****8799 ✏️</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">小微查验证名</div>
-            <div class="info-value">是</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">店铺版本</div>
-            <div class="info-value">21天 蓝营许牌</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">经营地址</div>
-            <div class="info-value">广东·深圳·福田新村三区65栋1303</div>
-          </div>
-        </div>
+    <!-- 店铺设置内容 -->
+    <div v-if="activeTab === 'settings'" class="shop-info-content">
+      <!-- 店铺设置暂无内容 -->
 
-        <!-- 证件照片 -->
-        <div class="document-section">
-          <div class="document-item">
-            <label>身份证</label>
-            <div class="document-image">
-              <div class="placeholder-img">身份证照片</div>
-            </div>
-          </div>
-          <div class="document-item">
-            <label>营业证营业照</label>
-            <div class="document-image">
-              <div class="placeholder-img">营业执照照片</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 个人信息 -->
-        <div class="personal-info">
-          <div class="info-row">
-            <div class="info-label">姓名</div>
-            <div class="info-value">徐***</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">证件号码</div>
-            <div class="info-value">4405****432</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">证件开始日期</div>
-            <div class="info-value">2023-03-30</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">证件截止日期</div>
-            <div class="info-value">2043-03-30</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">证件签发地</div>
-            <div class="info-value">广东省深圳市福田区龙山大道1155号110室</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 店铺资质工具 -->
-      <div class="tools-section">
-        <h3>店铺资质工具</h3>
-        <div class="tools-grid">
-          <div class="tool-item">
-            <div class="tool-icon">🏪</div>
-            <div class="tool-title">店铺资质</div>
-            <div class="tool-desc">管理主体资质信息以及小店、达人等资质管理等、编辑、更新</div>
-          </div>
-          <div class="tool-item">
-            <div class="tool-icon">👤</div>
-            <div class="tool-title">主体/社会信用代码变更</div>
-            <div class="tool-desc">个体经营变更主体信息、企业经营主体变更、统一社会信用代码变更</div>
-          </div>
-          <div class="tool-item">
-            <div class="tool-icon">🏢</div>
-            <div class="tool-title">行业资质</div>
-            <div class="tool-desc">管理行业资质信息管理、编辑、更新等</div>
-          </div>
-          <div class="tool-item">
-            <div class="tool-icon">✅</div>
-            <div class="tool-title">商品资质</div>
-            <div class="tool-desc">管理商品资质信息管理、编辑、更新等</div>
-          </div>
-          <div class="tool-item">
-            <div class="tool-icon">📋</div>
-            <div class="tool-title">经营证明</div>
-            <div class="tool-desc">管理证明申请资质、工单（仅交易性平台需展示项）</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 店铺设置工具 -->
-      <div class="settings-section">
-        <h3>店铺设置工具</h3>
-        <div class="settings-grid">
-          <div class="setting-item">
-            <div class="setting-icon">🏪</div>
-            <div class="setting-title">关店</div>
-            <div class="setting-desc">暂停关闭店铺</div>
-          </div>
-          <div class="setting-item">
-            <div class="setting-icon">⬆️</div>
-            <div class="setting-title">店铺升级</div>
-            <div class="setting-desc">暂停升级社区</div>
-          </div>
-          <div class="setting-item">
-            <div class="setting-icon">💳</div>
-            <div class="setting-title">支付方式设置</div>
-            <div class="setting-desc">商原付费支付设置、微原支付等支付方式设置并开启自营</div>
-          </div>
-          <div class="setting-item">
-            <div class="setting-icon">📊</div>
-            <div class="setting-title">整务提效</div>
-            <div class="setting-desc">整务整善条资以工作看营效情况</div>
-          </div>
-          <div class="setting-item">
-            <div class="setting-icon">📈</div>
-            <div class="setting-title">数据增效</div>
-            <div class="setting-desc">提效数据看经营的指标发情况</div>
-          </div>
-          <div class="setting-item">
-            <div class="setting-icon">👥</div>
-            <div class="setting-title">联系运营小二</div>
-            <div class="setting-desc">联系运营小二沟通经营问题</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-// 这里可以添加响应式数据和方法
+import { ref } from 'vue'
+
+// 当前激活的 tab
+const activeTab = ref('info')
+
+// 显示帮助信息
+const showHelp = (tab) => {
+  alert(`${tab === 'info' ? '店铺信息' : tab === 'settings' ? '店铺设置' : '店铺资质'}帮助`)
+}
 </script>
 
 <style scoped>
@@ -167,6 +69,18 @@
   background-color: #ffffff;
   border-radius: 8px;
   overflow: hidden;
+}
+
+/* Header 图片 */
+.header-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.header-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* 页面标签 */
@@ -181,6 +95,9 @@
   cursor: pointer;
   color: #666;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .tab.active {
@@ -198,25 +115,46 @@
   background-color: #1890ff;
 }
 
-/* 内容标签 */
-.content-tabs {
-  display: flex;
-  padding: 16px 24px;
-  border-bottom: 1px solid #e6e6e6;
-  background-color: #ffffff;
-}
-
-.content-tab {
-  padding: 8px 16px;
-  margin-right: 24px;
+/* 小问号图标 */
+.help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
   cursor: pointer;
-  color: #666;
-  border-radius: 4px;
+  transition: all 0.2s;
 }
 
-.content-tab.active {
-  color: #1890ff;
-  background-color: #e6f7ff;
+.help-icon:hover {
+  background-color: #1890ff;
+  transform: scale(1.1);
+}
+
+/* 店铺资质内容 */
+.qualification-content {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qualification-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* 基本信息图片 */
+.basic-info-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* 主要内容 */
