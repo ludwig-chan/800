@@ -143,16 +143,19 @@ const showHelp = (tab) => {
   display: flex;
   border-bottom: 1px solid #e6e6e6;
   background-color: #fafafa;
+  margin-left: 24px;
 }
 
 .tab {
   padding: 16px 24px;
+  padding-left: 0;
   cursor: pointer;
   color: #666;
   position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 14px;
 }
 
 .tab.active {
@@ -175,20 +178,27 @@ const showHelp = (tab) => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background-color: #d9d9d9;
-  color: #fff;
-  font-size: 12px;
+  border: 1.5px solid #666;
+  background-color: transparent;
+  color: #666;
+  font-size: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .help-icon:hover {
-  background-color: #1890ff;
+  border-color: #1890ff;
+  color: #1890ff;
   transform: scale(1.1);
+}
+
+.tab.active .help-icon {
+  border-color: #1890ff;
+  color: #1890ff;
 }
 
 /* 店铺资质内容 */
@@ -233,10 +243,10 @@ const showHelp = (tab) => {
 }
 
 .overlay-text:hover {
-  background-color: rgba(24, 144, 255, 0.1);
-  color: #1890ff;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.2);
+  /* background-color: rgba(24, 144, 255, 0.1); */
+  /* color: #1890ff; */
+  /* transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.2); */
 }
 
 /* 基本信息图片 */

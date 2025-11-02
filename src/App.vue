@@ -323,7 +323,7 @@ onUnmounted(() => {
   border-radius: 4px;
   transition: all 0.2s;
   text-align: left;
-  background-color: #fff;
+  /* background-color: #fff; */
   white-space: nowrap;
 }
 
