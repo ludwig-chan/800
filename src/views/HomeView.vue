@@ -33,6 +33,7 @@
   height: 100%;
   object-fit: fill; /* 拉伸图片填充整个容器 */
   display: block;
+  margin-left: 8px;
 }
 
 /* 响应式设计 */

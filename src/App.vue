@@ -253,9 +253,11 @@ onUnmounted(() => {
 /* 侧边栏 */
 .sidebar {
   width: 208px;
-  /* margin-left: 16px; */
+  margin-left: 16px;
   margin-right: 140px;
+  margin-top: 16px;
   background-color: #ffffff;
+  border-radius: 8px;
   /* border-right: 1px solid #e6e6e6; */
   padding: 20px 0;
   overflow-y: auto;
@@ -264,6 +266,12 @@ onUnmounted(() => {
   bottom: 0;
   left: 0;
   z-index: 100;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .sidebar-section {
@@ -357,7 +365,7 @@ onUnmounted(() => {
 
 .submenu-link.router-link-active {
   color: #1890ff;
-  background-color: #e6f7ff;
+  /* background-color: #e6f7ff; */
 }
 
 /* 主要内容区域 */
