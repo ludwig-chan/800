@@ -42,6 +42,18 @@
               <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
+          <div class="submenu-grid" v-show="menuExpanded.订单">
+            <a href="#" class="submenu-link">订单管理</a>
+            <a href="#" class="submenu-link">卡券管理</a>
+            <a href="#" class="submenu-link">订单工具</a>
+            <a href="#" class="submenu-link">发货中心</a>
+            <a href="#" class="submenu-link">订单报备</a>
+            <a href="#" class="submenu-link">包裹中心</a>
+            <a href="#" class="submenu-link">物流工具</a>
+            <a href="#" class="submenu-link">电子面单</a>
+            <a href="#" class="submenu-link">物流服务</a>
+            <a href="#" class="submenu-link">物流诊断</a>
+          </div>
         </div>
         
         <!-- 售后 -->
@@ -61,6 +73,18 @@
             <svg class="arrow" :class="{ expanded: menuExpanded.商品 }" width="12" height="12" viewBox="0 0 12 12">
               <polyline points="3,4 6,7 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+          </div>
+          <div class="submenu-grid" v-show="menuExpanded.商品">
+            <a href="#" class="submenu-link">商品创建</a>
+            <a href="#" class="submenu-link">商品管理</a>
+            <a href="#" class="submenu-link">评价管理</a>
+            <a href="#" class="submenu-link">库存管理</a>
+            <a href="#" class="submenu-link">渠道品管理</a>
+            <a href="#" class="submenu-link">商品诊断</a>
+            <a href="#" class="submenu-link">商机中心</a>
+            <a href="#" class="submenu-link">商品成长</a>
+            <a href="#" class="submenu-link">商品工具</a>
+            <a href="#" class="submenu-link">商品素材</a>
           </div>
         </div>
         
@@ -139,9 +163,9 @@ const userInfoRef = ref(null)
 const menuExpanded = ref({
   常用: false,
   流量: false,
-  订单: false,
+  订单: true,  // 默认展开
   售后: false,
-  商品: false,
+  商品: true,  // 默认展开
   店铺: false,
   用户: false,
   资金: false,
