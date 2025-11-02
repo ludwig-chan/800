@@ -2,7 +2,9 @@
   <div id="app">
     <!-- 顶部导航栏 -->
     <header class="top-header">
-      <img src="@/assets/images/header.png" alt="Header Placeholder" class="header-placeholder" />
+      <RouterLink to="/" class="header-link">
+        <img src="@/assets/images/header.png" alt="Header Placeholder" class="header-placeholder" />
+      </RouterLink>
     </header>
 
     <div class="main-layout">
@@ -198,11 +200,23 @@ onUnmounted(() => {
   justify-content: center;
 }
 
+.header-link {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .header-placeholder {
   width: 100%;
   height: 64px;
   object-fit: cover;
   display: block;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.header-placeholder:hover {
+  opacity: 0.9;
 }
 
 /* 主要布局 */
