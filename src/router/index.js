@@ -85,6 +85,11 @@ const router = createRouter({
       path: '/new-page',
       name: 'new-page',
       component: () => import('../views/NewPageView.vue')
+    },
+    {
+      path: '/shop/chance/rank-shop',
+      name: 'rank-shop',
+      component: () => import('../views/NewPageView.vue')
     }
   ]
 })

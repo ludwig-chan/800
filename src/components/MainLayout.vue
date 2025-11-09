@@ -9,7 +9,7 @@
       <div class="header-links">
         <a href="#" class="header-text-link">巨量千川</a>
         <a href="#" class="header-text-link">精选联盟</a>
-        <a href="/new-page" target="_blank" class="header-text-link">电商罗盘</a>
+        <a href="/shop/chance/rank-shop?from_page=%2Fshop&btm_ppre=a2427.b76571.c902327.d608306&btm_pre=a6187.b01487.c0.d0&btm_show_id=715e8459-1a16-4fc1-9999-cbd88c879f78" target="_blank" class="header-text-link">电商罗盘</a>
         <a href="#" class="header-text-link">服务市场</a>
         <a href="#" class="header-text-link">学习中心</a>
       </div>
