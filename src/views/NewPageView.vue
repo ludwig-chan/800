@@ -85,11 +85,22 @@
     <div v-if="!hideDefaultImage" class="center-image-wrapper">
       <img src="../assets/images/default-data.png" alt="Default Data" class="center-image" />
     </div>
+
+    <!-- 图片区域 Loading 组件 -->
+    <div v-if="isImageLoading" class="image-loading-wrapper">
+      <LoadingSpinner />
+    </div>
+
+    <!-- 全页面 Loading 组件 -->
+    <div v-if="isLoading" class="loading-wrapper">
+      <LoadingSpinner />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
+import LoadingSpinner from '../components/LoadingSpinner.vue'
 
 // 罗盘点击状态
 const isCompassActive = ref(false)
@@ -97,6 +108,13 @@ const isCompassActive = ref(false)
 // 罗盘点击事件处理函数
 const handleCompassClick = () => {
   isCompassActive.value = true
+  isLoading.value = true
+  
+  // 模拟加载，0.5秒后隐藏 loading
+  setTimeout(() => {
+    isLoading.value = false
+  }, 500)
+  
   // 具体动作待实现
   console.log('罗盘被点击')
 }
@@ -121,6 +139,8 @@ const selectedMoreOption = ref('')
 const selectedYear = ref(new Date().getFullYear())
 const selectedMonth = ref(new Date().getMonth() + 1)
 const hideDefaultImage = ref(false) // 控制图片显示隐藏
+const isLoading = ref(false) // 控制全页面 loading 显示
+const isImageLoading = ref(false) // 控制图片区域 loading 显示
 
 // 快捷按钮
 const quickButtons = [
@@ -269,9 +289,15 @@ const selectMonth = (month) => {
 
 // 处理月份选择
 const handleMonthSelect = () => {
-  // 选择了月份后隐藏图片
+  // 显示图片区域 loading
+  isImageLoading.value = true
   hideDefaultImage.value = true
   showMorePopup.value = false
+  
+  // 模拟数据加载，0.5秒后隐藏 loading
+  setTimeout(() => {
+    isImageLoading.value = false
+  }, 500)
   
   // 设置该月的日期范围
   const year = selectedYear.value
@@ -362,6 +388,34 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: fill;
+}
+
+/* 图片区域 Loading 样式 */
+.image-loading-wrapper {
+  position: absolute;
+  top: 48%;
+  left: 11.7%;
+  z-index: 11;
+  width: 1612px;
+  height: 368px;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 全页面 Loading 样式 */
+.loading-wrapper {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 日期选择器样式 */
