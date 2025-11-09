@@ -81,9 +81,21 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // 当前激活的 tab
 const activeTab = ref('info')
+
+// 监听activeTab变化，更新页面标题
+watch(activeTab, (newTab) => {
+  if (newTab === 'qualification') {
+    document.title = '资质中心'
+  } else {
+    document.title = '店铺基本信息'
+  }
+})
 
 // 弹窗显示状态
 const showEditModal = ref(false)

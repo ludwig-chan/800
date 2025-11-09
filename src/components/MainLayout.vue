@@ -134,7 +134,7 @@
             </svg>
           </div>
           <div class="submenu-grid" v-show="menuExpanded.店铺">
-            <RouterLink to="/shop-info" class="submenu-link">店铺信息设置</RouterLink>
+            <RouterLink to="/ffa/grs-new/qualification/shopinfo?btm_ppre=a2427.b76571.c4158.d20759_i0&btm_pre=a2427.b76571.c902327.d871297&btm_show_id=a1a20811-bf96-4b8c-aff9-aeb0767de610" class="submenu-link">店铺信息设置</RouterLink>
             <a href="#" class="submenu-link">商家体验分</a>
             <a href="#" class="submenu-link">经营账号管理</a>
             <a href="#" class="submenu-link">子账号管理</a>
@@ -508,7 +508,7 @@ onUnmounted(() => {
   width: 208px;
   margin-left: 16px;
   margin-right: 140px;
-  margin-top: 16px;
+  /* margin-top: 16px; */
   background-color: #ffffff;
   border-radius: 8px;
   padding: 20px 0;
@@ -624,6 +624,6 @@ onUnmounted(() => {
   background-color: #f5f5f5;
   overflow-y: auto;
   padding: 0;
-  margin-left: 224px;
+  margin-left: calc(224px + 16px);
 }
 </style>
