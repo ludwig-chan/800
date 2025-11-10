@@ -3,7 +3,7 @@
     <img src="../assets/images/second-page.png" alt="Second Page" class="full-page-image" />
     <!-- 顶部罗盘链接 -->
     <div class="compass-link-wrapper">
-      <a href="#" class="compass-link" :class="{ active: isCompassActive }" @click.prevent="handleCompassClick">罗盘</a>
+      <a href="#" class="compass-link" :class="{ active: isCompassActive }" @click.prevent="handleCompassClick">交易</a>
     </div>
     <!-- 右上角店铺名称 -->
     <div class="shop-name-wrapper">
