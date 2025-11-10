@@ -26,6 +26,27 @@
       </div>
     </div>
 
+    <!-- 时间编辑弹窗 -->
+    <div v-if="showTimeEditModal" class="modal-overlay" @click="showTimeEditModal = false">
+      <div class="modal-content" @click.stop>
+        <h3>编辑时间信息</h3>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>成立时间：</label>
+            <input v-model="tempEstablishTime" type="text" class="modal-input" placeholder="请输入成立时间" />
+          </div>
+          <div class="form-group">
+            <label>核准时间：</label>
+            <input v-model="tempApprovalTime" type="text" class="modal-input" placeholder="请输入核准时间" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" @click="showTimeEditModal = false">取消</button>
+          <button class="btn-confirm" @click="saveTimes">确定</button>
+        </div>
+      </div>
+    </div>
+
     <!-- 页面标题导航 -->
     <div class="page-tabs">
       <div 
@@ -61,6 +82,12 @@
         <div class="input-overlay">
           <span class="overlay-text" @click="showEditModal = true">{{ text1 || '文本1' }}</span>
           <span class="overlay-text" @click="showEditModal = true">{{ text2 || '文本2' }}</span>
+        </div>
+        
+        <!-- 成立时间和核准时间 -->
+        <div class="time-info-overlay">
+          <span class="time-overlay-text" @click="showTimeEditModal = true">{{ establishTime || '成立时间' }}</span>
+          <span class="time-overlay-text" @click="showTimeEditModal = true">{{ approvalTime || '核准时间' }}</span>
         </div>
       </div>
     </div>
@@ -99,20 +126,32 @@ watch(activeTab, (newTab) => {
 
 // 弹窗显示状态
 const showEditModal = ref(false)
+const showTimeEditModal = ref(false)
 
 // 从localStorage读取数据
 const text1 = ref(localStorage.getItem('shopText1') || '深圳市鸿达商贸有限公司')
 const text2 = ref(localStorage.getItem('shopText2') || '91440300MA5DC6YB2X')
+const establishTime = ref(localStorage.getItem('establishTime') || '2020-01-01')
+const approvalTime = ref(localStorage.getItem('approvalTime') || '2025-01-15')
 
 // 临时编辑值
 const tempText1 = ref('')
 const tempText2 = ref('')
+const tempEstablishTime = ref('')
+const tempApprovalTime = ref('')
 
-// 监听弹窗打开，同步当前值到临时值
+// 监听弹窗打开,同步当前值到临时值
 watch(showEditModal, (newVal) => {
   if (newVal) {
     tempText1.value = text1.value
     tempText2.value = text2.value
+  }
+})
+
+watch(showTimeEditModal, (newVal) => {
+  if (newVal) {
+    tempEstablishTime.value = establishTime.value
+    tempApprovalTime.value = approvalTime.value
   }
 })
 
@@ -123,6 +162,14 @@ const saveTexts = () => {
   localStorage.setItem('shopText1', text1.value)
   localStorage.setItem('shopText2', text2.value)
   showEditModal.value = false
+}
+
+const saveTimes = () => {
+  establishTime.value = tempEstablishTime.value
+  approvalTime.value = tempApprovalTime.value
+  localStorage.setItem('establishTime', establishTime.value)
+  localStorage.setItem('approvalTime', approvalTime.value)
+  showTimeEditModal.value = false
 }
 
 // 显示帮助信息
@@ -254,11 +301,25 @@ const showHelp = (tab) => {
   transition: all 0.2s;
 }
 
-.overlay-text:hover {
-  /* background-color: rgba(24, 144, 255, 0.1); */
-  /* color: #1890ff; */
-  /* transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.2); */
+/* 时间信息叠加层 */
+.time-info-overlay {
+  position: absolute;
+  top: 404px;
+  left: 194px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 10;
+}
+
+.time-overlay-text {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 /* 基本信息图片 */
